@@ -17,7 +17,7 @@
         }
 
         body {
-            background-color: transparent !important; /* TRANSPARENTE TOTAL */
+            background-color: transparent !important;
             color: #ffffff;
             font-family: 'Lato', sans-serif;
             display: flex;
@@ -27,19 +27,21 @@
         }
 
         /* ==================================================================
-           CONTROL DE TAMAÑO: Modificá el valor de '--escala' aquí abajo si querés retocarlo.
+           CONTROL DE TAMAÑO BASE: Bajado a 2.0 para que respire mejor con el texto largo.
            ==================================================================
         */
         .countdown-wrapper {
-            --escala: 1.3; 
+            --escala: 2.0; 
             
             font-size: calc(16px * var(--escala));
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 2.5em;
-            width: 300%;
+            justify-content: center;
+            gap: 1.5em;
+            width: 100%;
             max-width: max-content;
+            padding: 1em;
         }
 
         .timer {
@@ -49,60 +51,6 @@
             width: 100%;
         }
 
-        /* Bloques con los rebordes de<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cuenta Regresiva Antártida</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
-
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            background-color: transparent !important; /* TRANSPARENTE TOTAL */
-            color: #ffffff;
-            font-family: 'Lato', sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            overflow: hidden; /* Evita barras de scroll molestas */
-        }
-
-        /* ==================================================================
-           CONTROL DE TAMAÑO: Subí la escala a 2.5 para que sea GIGANTE.
-           Si lo querés todavía más grande, subí este número (ej: 2.8 o 3.0).
-           ==================================================================
-        */
-        .countdown-wrapper {
-            --escala: 2.5; 
-            
-            font-size: calc(16px * var(--escala));
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            max-width: max-content;
-        }
-
-        .timer {
-            display: flex;
-            justify-content: center;
-            gap: 0.8em;
-            width: 100%;
-        }
-
-        /* Bloques con los rebordes originales */
         .time-box {
             background-color: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.15);
@@ -136,28 +84,63 @@
             font-family: 'Lato', sans-serif !important;
         }
 
+        /* Recuadro inferior con tu nuevo bloque de texto */
+        .info-box {
+            border: 1px solid #E45B4C;
+            border-radius: 0.5em;
+            padding: 1.2em 1.5em;
+            font-size: 0.45em; /* Tamaño equilibrado para el párrafo */
+            line-height: 1.6;
+            text-align: center;
+            background-color: transparent;
+            max-width: 32em;
+            color: #ffffff;
+            font-family: 'Lato', sans-serif !important;
+        }
+
+        /* El 2048 en tu rojo exacto */
+        .highlight {
+            color: #E45B4C;
+            font-weight: 900;
+            font-size: 1.15em;
+        }
+
+        /* Subrayados solicitados en blanco */
+        .underlined {
+            text-decoration: underline;
+            text-decoration-color: #ffffff;
+            text-underline-offset: 3px;
+        }
+
         @media (max-width: 768px) {
             .countdown-wrapper {
-                --escala: 1.8; /* Se achica un poco en tablets */
+                --escala: 1.5;
+            }
+            .info-box {
+                max-width: 24em;
             }
         }
 
         @media (max-width: 480px) {
             .countdown-wrapper {
-                --escala: 1.2; /* Se achica en celulares para que no se rompa */
+                --escala: 1.1;
             }
             .timer {
-                gap: 0.5em;
+                gap: 0.4em;
             }
             .time-box {
-                min-width: 4.5em;
-                padding: 1em 0.3em;
+                min-width: 4.2em;
+                padding: 0.8em 0.2em;
             }
             .number {
-                font-size: 2.2em;
+                font-size: 2em;
             }
             .label {
-                font-size: 0.65em;
+                font-size: 0.6em;
+            }
+            .info-box {
+                max-width: 100%;
+                font-size: 0.55em;
             }
         }
     </style>
@@ -186,6 +169,10 @@
                 <span class="number" id="seconds">16</span>
                 <span class="label">SEG</span>
             </div>
+        </div>
+
+        <div class="info-box">
+            En <span class="highlight">2048</span> se abre la ventana de revisión del <span class="underlined">Protocolo de Madrid</span>. Aunque el <span class="underlined">Tratado Antártico no vence</span>, los países miembros podrán discutir el futuro de la explotación de recursos y proponer nuevas reglas para el continente. Esta fecha no representa el final del sistema antártico, sino el comienzo de una <span class="underlined">nueva discusión geopolítica</span> sobre el futuro de la Antártida.
         </div>
     </div>
 
@@ -217,9 +204,5 @@
     </script>
 </body>
 </html>
-
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
-    </script>
 </body>
 </html>

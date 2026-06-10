@@ -32,7 +32,7 @@
            ==================================================================
         */
         .countdown-wrapper {
-            --escala: 1.15; 
+            --escala: 1.5; 
             
             font-size: calc(16px * var(--escala));
             display: flex;

@@ -27,12 +27,11 @@
         }
 
         /* ==================================================================
-           TAMAÑO AJUSTADO: Ya te lo dejé en 1.15 (un toque más grande que el
-           original pero sin exagerar). Si después lo querés retocar, movés este número.
+           CONTROL DE TAMAÑO: Modificá el valor de '--escala' aquí abajo si querés retocarlo.
            ==================================================================
         */
         .countdown-wrapper {
-            --escala: 1.5; 
+            --escala: 1.3; 
             
             font-size: calc(16px * var(--escala));
             display: flex;
@@ -84,9 +83,9 @@
             font-family: 'Lato', sans-serif !important;
         }
 
-        /* Recuadro inferior del 2048 */
+        /* Recuadro inferior del 2048 - NUEVO ROJO E45B4C */
         .info-box {
-            border: 1px solid #d94a6a;
+            border: 1px solid #E45B4C;
             border-radius: 0.25em;
             padding: 0.9em 1.8em;
             font-size: 0.95em;
@@ -101,8 +100,9 @@
             font-family: 'Lato', sans-serif !important;
         }
 
+        /* El 2048 - NUEVO ROJO E45B4C */
         .highlight {
-            color: #d94a6a;
+            color: #E45B4C;
             font-weight: 900;
             font-size: 1.4em;
             line-height: 1;

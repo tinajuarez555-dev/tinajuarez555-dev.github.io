@@ -10,10 +10,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
 
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
         }
 
         body {
@@ -24,19 +24,24 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            overflow: hidden;
         }
 
+        /* ==================================================================
+           ALINEACIÓN PERFECTA: "align-items: stretch" fuerza a que el 
+           recuadro y el reloj tengan exactamente el mismo ancho.
+           ==================================================================
+        */
         .countdown-wrapper {
             --escala: 2.0; 
-            
             font-size: calc(16px * var(--escala));
             display: flex;
             flex-direction: column;
-            align-items: center;
+            align-items: stretch; /* Alinea los bordes perfectamente */
             justify-content: center;
             gap: 1.5em;
             width: 100%;
-            max-width: max-content;
+            max-width: 38.2em; /* El ancho máximo exacto que ocupan los 5 bloques */
             padding: 1em;
         }
 
@@ -65,7 +70,6 @@
         .number {
             font-size: 3em;
             font-weight: 400;
-            color: #ffffff;
             line-height: 1;
             font-family: 'Lato', sans-serif !important;
         }
@@ -80,70 +84,43 @@
             font-family: 'Lato', sans-serif !important;
         }
 
+        /* El recuadro ahora es inteligente y mide lo mismo que el reloj */
         .info-box {
-            border: 1px solid #E45B4C;
+            border: 1px solid #E45B4C; 
             border-radius: 8px;
             padding: 35px 45px; 
             font-size: 18px !important; 
             line-height: 1.6;
             text-align: center;
             background-color: transparent;
-            max-width: 850px; 
-            width: 100%;
+            width: 100%; /* Ocupa el 100% del ancho del reloj */
             color: #ffffff;
             font-family: 'Lato', sans-serif !important;
-            margin-top: 40px;
+            margin-top: 20px;
         }
 
         .highlight {
-            color: #E45B4C;
+            color: #E45B4C; 
             font-weight: 900;
         }
 
-        /* Nueva clase para las negritas solicitadas */
         .bolded {
-            font-weight: 700;
-            color: #ffffff;
+            font-weight: 700; 
         }
 
-        @media (max-width: 900px) {
-            .info-box {
-                max-width: 90%;
-                padding: 25px 25px;
-                font-size: 16px !important;
-            }
-        }
-
+        /* Ajustes para pantallas más chicas */
         @media (max-width: 768px) {
-            .countdown-wrapper {
-                --escala: 1.5;
-            }
-            .info-box {
-                font-size: 14px !important;
-            }
+            .countdown-wrapper { --escala: 1.5; }
+            .info-box { font-size: 14px !important; padding: 25px; }
         }
 
         @media (max-width: 480px) {
-            .countdown-wrapper {
-                --escala: 1.1;
-            }
-            .timer {
-                gap: 0.4em;
-            }
-            .time-box {
-                min-width: 4.2em;
-                padding: 0.8em 0.2em;
-            }
-            .number {
-                font-size: 2em;
-            }
-            .label {
-                font-size: 0.6em;
-            }
-            .info-box {
-                font-size: 13px !important;
-                padding: 15px;
-            }
+            .countdown-wrapper { --escala: 1.1; }
+            .timer { gap: 0.4em; }
+            .time-box { min-width: 4.2em; padding: 0.8em 0.2em; }
+            .number { font-size: 2em; }
+            .label { font-size: 0.6em; }
+            .info-box { font-size: 13px !important; padding: 15px; }
         }
     </style>
 </head>
@@ -152,23 +129,23 @@
     <div class="countdown-wrapper">
         <div class="timer">
             <div class="time-box">
-                <span class="number" id="years">21</span>
+                <span class="number" id="years">00</span>
                 <span class="label">AÑOS</span>
             </div>
             <div class="time-box">
-                <span class="number" id="days">203</span>
+                <span class="number" id="days">000</span>
                 <span class="label">DÍAS</span>
             </div>
             <div class="time-box">
-                <span class="number" id="hours">08</span>
+                <span class="number" id="hours">00</span>
                 <span class="label">HORAS</span>
             </div>
             <div class="time-box">
-                <span class="number" id="minutes">09</span>
+                <span class="number" id="minutes">00</span>
                 <span class="label">MIN</span>
             </div>
             <div class="time-box">
-                <span class="number" id="seconds">16</span>
+                <span class="number" id="seconds">00</span>
                 <span class="label">SEG</span>
             </div>
         </div>
@@ -180,11 +157,9 @@
 
     <script>
         const targetDate = new Date('January 1, 2048 00:00:00').getTime();
-
         function updateCountdown() {
             const now = new Date().getTime();
             const difference = targetDate - now;
-
             if (difference > 0) {
                 const daysTotal = Math.floor(difference / (1000 * 60 * 60 * 24));
                 const years = Math.floor(daysTotal / 365.25);
@@ -200,7 +175,6 @@
                 document.getElementById('seconds').innerText = seconds.toString().padStart(2, '0');
             }
         }
-
         setInterval(updateCountdown, 1000);
         updateCountdown();
     </script>

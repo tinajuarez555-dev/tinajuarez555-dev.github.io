@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cuenta Regresiva Final</title>
+    <title>Cuenta Regresiva Antártida</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,12 +27,12 @@
         }
 
         /* ==================================================================
-           CONTROL DE TAMAÑO: Modificá el valor de '--escala' aquí abajo.
-           0.8 = Más chico | 1.0 = Tamaño Normal | 1.3 = Más grande
+           TAMAÑO AJUSTADO: Ya te lo dejé en 1.15 (un toque más grande que el
+           original pero sin exagerar). Si después lo querés retocar, movés este número.
            ==================================================================
         */
         .countdown-wrapper {
-            --escala: 1.0; 
+            --escala: 1.15; 
             
             font-size: calc(16px * var(--escala));
             display: flex;
@@ -50,7 +50,7 @@
             width: 100%;
         }
 
-        /* Bloques con los rebordes idénticos a tu imagen */
+        /* Bloques con los rebordes de tu imagen */
         .time-box {
             background-color: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.15);

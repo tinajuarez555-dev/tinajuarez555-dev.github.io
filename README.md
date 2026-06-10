@@ -26,10 +26,6 @@
             min-height: 100vh;
         }
 
-        /* ==================================================================
-           CONTROL DE TAMAÑO BASE: Bajado a 2.0 para que respire mejor con el texto largo.
-           ==================================================================
-        */
         .countdown-wrapper {
             --escala: 2.0; 
             
@@ -84,32 +80,38 @@
             font-family: 'Lato', sans-serif !important;
         }
 
-        /* Recuadro inferior con tu nuevo bloque de texto */
         .info-box {
             border: 1px solid #E45B4C;
-            border-radius: 0.5em;
-            padding: 1.2em 1.5em;
-            font-size: 0.45em; /* Tamaño equilibrado para el párrafo */
+            border-radius: 8px;
+            padding: 35px 45px; 
+            font-size: 18px !important; 
             line-height: 1.6;
             text-align: center;
             background-color: transparent;
-            max-width: 32em;
+            max-width: 850px; 
+            width: 100%;
             color: #ffffff;
             font-family: 'Lato', sans-serif !important;
+            margin-top: 40px;
         }
 
-        /* El 2048 en tu rojo exacto */
         .highlight {
             color: #E45B4C;
             font-weight: 900;
-            font-size: 1.15em;
         }
 
-        /* Subrayados solicitados en blanco */
-        .underlined {
-            text-decoration: underline;
-            text-decoration-color: #ffffff;
-            text-underline-offset: 3px;
+        /* Nueva clase para las negritas solicitadas */
+        .bolded {
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        @media (max-width: 900px) {
+            .info-box {
+                max-width: 90%;
+                padding: 25px 25px;
+                font-size: 16px !important;
+            }
         }
 
         @media (max-width: 768px) {
@@ -117,7 +119,7 @@
                 --escala: 1.5;
             }
             .info-box {
-                max-width: 24em;
+                font-size: 14px !important;
             }
         }
 
@@ -139,8 +141,8 @@
                 font-size: 0.6em;
             }
             .info-box {
-                max-width: 100%;
-                font-size: 0.55em;
+                font-size: 13px !important;
+                padding: 15px;
             }
         }
     </style>
@@ -172,7 +174,7 @@
         </div>
 
         <div class="info-box">
-            En <span class="highlight">2048</span> se abre la ventana de revisión del <span class="underlined">Protocolo de Madrid</span>. Aunque el <span class="underlined">Tratado Antártico no vence</span>, los países miembros podrán discutir el futuro de la explotación de recursos y proponer nuevas reglas para el continente. Esta fecha no representa el final del sistema antártico, sino el comienzo de una <span class="underlined">nueva discusión geopolítica</span> sobre el futuro de la Antártida.
+            En <span class="highlight">2048</span> se abre la ventana de revisión del <span class="bolded">Protocolo de Madrid</span>. Aunque el <span class="bolded">Tratado Antártico no vence</span>, los países miembros podrán discutir el futuro de la explotación de recursos y proponer nuevas reglas para el continente. Esta fecha no representa el final del sistema antártico, sino el comienzo de una <span class="bolded">nueva discusión geopolítica</span> sobre el futuro de la Antártida.
         </div>
     </div>
 
@@ -202,7 +204,5 @@
         setInterval(updateCountdown, 1000);
         updateCountdown();
     </script>
-</body>
-</html>
 </body>
 </html>

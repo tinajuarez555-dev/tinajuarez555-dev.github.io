@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuenta Regresiva Final</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: transparent !important; /* TRANSPARENTE TOTAL */
+            color: #ffffff;
+            font-family: 'Lato', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* ==================================================================
+           CONTROL DE TAMAÑO: Modificá el valor de '--escala' aquí abajo.
+           0.8 = Más chico | 1.0 = Tamaño Normal | 1.3 = Más grande
+           ==================================================================
+        */
+        .countdown-wrapper {
+            --escala: 1.0; 
+            
+            font-size: calc(16px * var(--escala));
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2.5em;
+            width: 100%;
+            max-width: max-content;
+        }
+
+        .timer {
+            display: flex;
+            justify-content: center;
+            gap: 0.8em;
+            width: 100%;
+        }
+
+        /* Bloques con los rebordes idénticos a tu imagen */
+        .time-box {
+            background-color: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 0.5em;
+            padding: 1.4em 0.6em;
+            flex: 1;
+            min-width: 5.5em;
+            max-width: 7em;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0.25em 0.75em rgba(0, 0, 0, 0.2);
+        }
+
+        .number {
+            font-size: 3em;
+            font-weight: 400;
+            color: #ffffff;
+            line-height: 1;
+            font-family: 'Lato', sans-serif !important;
+        }
+
+        .label {
+            font-size: 0.75em;
+            font-weight: 700;
+            color: #8a99ad;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-top: 0.8em;
+            font-family: 'Lato', sans-serif !important;
+        }
+
+        /* Recuadro inferior del 2048 */
+        .info-box {
+            border: 1px solid #d94a6a;
+            border-radius: 0.25em;
+            padding: 0.9em 1.8em;
+            font-size: 0.95em;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-align: center;
+            background-color: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6em;
+            font-family: 'Lato', sans-serif !important;
+        }
+
+        .highlight {
+            color: #d94a6a;
+            font-weight: 900;
+            font-size: 1.4em;
+            line-height: 1;
+            font-family: 'Lato', sans-serif !important;
+        }
+
+        @media (max-width: 480px) {
+            .timer {
+                gap: 0.5em;
+            }
+            .time-box {
+                min-width: 4.5em;
+                padding: 1em 0.3em;
+            }
+            .number {
+                font-size: 2.2em;
+            }
+            .label {
+                font-size: 0.65em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="countdown-wrapper">
+        <div class="timer">
+            <div class="time-box">
+                <span class="number" id="years">21</span>
+                <span class="label">AÑOS</span>
+            </div>
+            <div class="time-box">
+                <span class="number" id="days">203</span>
+                <span class="label">DÍAS</span>
+            </div>
+            <div class="time-box">
+                <span class="number" id="hours">08</span>
+                <span class="label">HORAS</span>
+            </div>
+            <div class="time-box">
+                <span class="number" id="minutes">09</span>
+                <span class="label">MIN</span>
+            </div>
+            <div class="time-box">
+                <span class="number" id="seconds">16</span>
+                <span class="label">SEG</span>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <span>En</span>
+            <span class="highlight">2048</span>
+            <span>se abre la ventana de revisión</span>
+        </div>
+    </div>
+
+    <script>
+        const targetDate = new Date('January 1, 2048 00:00:00').getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+
+            if (difference > 0) {
+                const daysTotal = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const years = Math.floor(daysTotal / 365.25);
+                const days = Math.floor(daysTotal % 365.25);
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                document.getElementById('years').innerText = years.toString().padStart(2, '0');
+                document.getElementById('days').innerText = days.toString().padStart(3, '0');
+                document.getElementById('hours').innerText = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').innerText = minutes.toString().padStart(2, '0');
+                document.getElementById('seconds').innerText = seconds.toString().padStart(2, '0');
+            }
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html>

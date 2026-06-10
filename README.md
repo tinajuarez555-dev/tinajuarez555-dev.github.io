@@ -49,7 +49,60 @@
             width: 100%;
         }
 
-        /* Bloques con los rebordes de tu imagen */
+        /* Bloques con los rebordes de<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuenta Regresiva Antártida</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: transparent !important; /* TRANSPARENTE TOTAL */
+            color: #ffffff;
+            font-family: 'Lato', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden; /* Evita barras de scroll molestas */
+        }
+
+        /* ==================================================================
+           CONTROL DE TAMAÑO: Subí la escala a 2.5 para que sea GIGANTE.
+           Si lo querés todavía más grande, subí este número (ej: 2.8 o 3.0).
+           ==================================================================
+        */
+        .countdown-wrapper {
+            --escala: 2.5; 
+            
+            font-size: calc(16px * var(--escala));
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: max-content;
+        }
+
+        .timer {
+            display: flex;
+            justify-content: center;
+            gap: 0.8em;
+            width: 100%;
+        }
+
+        /* Bloques con los rebordes originales */
         .time-box {
             background-color: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.15);
@@ -83,33 +136,16 @@
             font-family: 'Lato', sans-serif !important;
         }
 
-        /* Recuadro inferior del 2048 - NUEVO ROJO E45B4C */
-        .info-box {
-            border: 1px solid #E45B4C;
-            border-radius: 0.25em;
-            padding: 0.9em 1.8em;
-            font-size: 0.95em;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            text-align: center;
-            background-color: transparent;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.6em;
-            font-family: 'Lato', sans-serif !important;
-        }
-
-        /* El 2048 - NUEVO ROJO E45B4C */
-        .highlight {
-            color: #E45B4C;
-            font-weight: 900;
-            font-size: 1.4em;
-            line-height: 1;
-            font-family: 'Lato', sans-serif !important;
+        @media (max-width: 768px) {
+            .countdown-wrapper {
+                --escala: 1.8; /* Se achica un poco en tablets */
+            }
         }
 
         @media (max-width: 480px) {
+            .countdown-wrapper {
+                --escala: 1.2; /* Se achica en celulares para que no se rompa */
+            }
             .timer {
                 gap: 0.5em;
             }
@@ -151,12 +187,6 @@
                 <span class="label">SEG</span>
             </div>
         </div>
-
-        <div class="info-box">
-            <span>En</span>
-            <span class="highlight">2048</span>
-            <span>se abre la ventana de revisión</span>
-        </div>
     </div>
 
     <script>
@@ -181,6 +211,12 @@
                 document.getElementById('seconds').innerText = seconds.toString().padStart(2, '0');
             }
         }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html>
 
         setInterval(updateCountdown, 1000);
         updateCountdown();
